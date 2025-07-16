@@ -47,7 +47,6 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children:[
               // Tao logo DNAfit
               SizedBox(height: 200),
@@ -125,5 +124,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
-
