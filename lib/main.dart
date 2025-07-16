@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -49,10 +47,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children:[
               // Tao logo DNAfit
               SizedBox(height: 200),
-              Text("DNAfit", style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 232, 233, 159), letterSpacing: 1.2)),
+              Text("DNAfit", style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 232, 233, 159), letterSpacing: 1.2)),
               
               // Tao o TextField nhap Username hoac Email
               SizedBox(height: 300),
