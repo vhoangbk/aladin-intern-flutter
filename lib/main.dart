@@ -27,33 +27,34 @@ class LoginScreen extends StatefulWidget
 class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/DNA_BLUE_2103.png"),
+    return GestureDetector( // Bọc để khi ấn bên ngoài phần bàn phím sẽ tắt 
+      onTap: () {
+        FocusScope.of(context).unfocus();
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,  // Cố định giao diện
+        body: SafeArea(
+          child: Container(
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height,
+              decoration: BoxDecoration(
+              image: DecorationImage(image: AssetImage("assets/DNA_BLUE_2103.png"),
 
           //Tao nen mau boc ngoai anh
-          fit: BoxFit.cover,
-          colorFilter: ColorFilter.mode(
-           Color(0xFF4B1C6F).withOpacity(0.8),
-           BlendMode.darken,
-          ),
-         ),
-        ),
+              fit: BoxFit.cover,
+              colorFilter: ColorFilter.mode(Color(0xFF4B1C6F).withOpacity(0.8),BlendMode.darken,),
+            ),
+           ),
+          
 
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
             children:[
               // Tao logo DNAfit
-              SizedBox(height: 200),
+              SizedBox(height:120),
               Text("DNAfit", style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 232, 233, 159), letterSpacing: 1.2)),
               
               // Tao o TextField nhap Username hoac Email
-              SizedBox(height: 300),
+              SizedBox(height: 100),
               TextField(
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
@@ -69,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
 
                // Tao o TextField nhap Password
-              SizedBox(height: 20),
+              SizedBox(height: 10),
               TextField(
                 style: TextStyle(color: Colors.white),
                 decoration: InputDecoration(
@@ -85,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               
               //Tao nut Sign In
-              SizedBox(height: 30),
+              SizedBox(height: 120),
               SizedBox(
                 height: 70,
                 width: 400,
@@ -104,9 +105,9 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               
               // Tao nut forgot password
-              SizedBox(height: 10),
+              SizedBox(height: 5),
               SizedBox(
-                height: 70,
+                height: 40,
                 width: 400,
                 child: TextButton(
                   style: TextButton.styleFrom(
@@ -115,12 +116,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: (){}, 
                   child: (
                     const Text("Forgot Password"))
-                  )
-                ),
+                )
+              ),
             ]
           )
-        )
+         )
+        
+
+       )
       )
-    );
+    );  
   }
 }
+
