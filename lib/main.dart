@@ -112,19 +112,4 @@ class _BoardingScreenState extends State<BoardingScreen> {
 
 
  
-/*Container(
-            height: 400,
-            width: 400,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: onBoardingScreen.map((image) {
-                  return Container(
-                    width: 400,
-                    height: 400,
-                    child: Image.asset(image, fit: BoxFit.cover)
-                  );
-                }).toList()
-              )              
-            )
-          ),*/
+
