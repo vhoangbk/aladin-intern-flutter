@@ -20,6 +20,7 @@ version: 1.0.0+1
 
 environment:
   sdk: ^3.8.1
+   
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,6 +31,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  smooth_page_indicator: ^1.1.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -63,6 +65,9 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
    - assets/DNA_BLUE_2103.png
+   - assets/bong_da.jpeg
+   - assets/bong_ro.jpeg
+   - assets/cau_long.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

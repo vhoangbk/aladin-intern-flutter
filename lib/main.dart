@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+final PageController _controller = PageController();
 
 void main() {
   runApp(const MyApp());
@@ -11,140 +14,90 @@ class MyApp extends StatelessWidget
   {
     return MaterialApp
     (
-      home: const LoginScreen(),
+      home: const BoardingScreen(),
     );
   }
 }
 
-class LoginScreen extends StatefulWidget
+class BoardingScreen extends StatefulWidget
 {
-  const LoginScreen({super.key});
+  const BoardingScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<BoardingScreen> createState() => _BoardingScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _BoardingScreenState extends State<BoardingScreen> {
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector( // Bọc để khi ấn bên ngoài phần bàn phím sẽ tắt 
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: Scaffold(
-        resizeToAvoidBottomInset: false, 
-        body: SafeArea( // Cố định giao diện
-          child: Stack(
-            children:[
-               // Hinh nen va logo co dinh
-               Container(
-                 width: double.infinity,
-                 height: double.infinity,
-                 decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage("assets/DNA_BLUE_2103.png"),
-                    fit: BoxFit.cover,
-                    colorFilter: ColorFilter.mode(Color(0xFF4B1C6F).withOpacity(0.8), BlendMode.darken,)
-                  )
-                 ),
-              // Tao logo
-                 alignment: Alignment(0, -0.75),
-                 child: Text("DNAfit", style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 232, 233, 159)))
-               ),
+    return Scaffold( 
+      body: Column(
+        children: [
+          // Phan anh co the keo qua lai
+          Expanded(
+            child: PageView(
+              controller: _controller,
+              children: [
+                Image.asset("assets/bong_da.jpeg", fit: BoxFit.cover),
+                Image.asset("assets/bong_ro.jpeg", fit: BoxFit.cover),
+                Image.asset("assets/cau_long.jpeg", fit: BoxFit.cover)
+              ],
+            ),
+          ),
 
-            // Text Field cuon len khi ban phim bi che
-               Container(
-                 alignment: Alignment.center,
-                 child: Padding(
-                   padding: const EdgeInsets.symmetric(horizontal: 30),
-                   child: Column(
-                     mainAxisSize: MainAxisSize.min,
-                     children: [
-                       SizedBox(height: 235),
-                       // Dung SingleChildScrollView de cuon 
-                       SingleChildScrollView(
-                         padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom,),
+          SmoothPageIndicator(
+            controller: _controller,
+            count: 3, 
+            effect: WormEffect(
+              dotWidth: 10,
+              dotHeight: 10,
+              activeDotColor: Colors.black
+            )
+          ),
 
-                      
-                         child: Column(
-                           children: [
-                             //Textfield dien User
-                             TextField(
-                               style: TextStyle(color: Colors.white),
-                               decoration: InputDecoration(
-                                 hintText: "USERNAME OR EMAIL",
-                                 hintStyle: TextStyle(color: Colors.white),
-                                 enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                                 focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                               ),
-                             ),
+          
+          
+          // Phan Text va nut bam co dinh
+          SizedBox(height: 50),
+          Container(
+            padding: EdgeInsets.all(16.0),
+            alignment: Alignment.center,
+            child: Column(
+              children: [
+                // Phan Text
+                Text("Welcome to CaStore !", style:TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Colors.black)),
+                SizedBox(height: 5),
+                Text("With long experience in the audio industry, ", textAlign: TextAlign.center, style: TextStyle(fontSize: 10),),
+                SizedBox(height: 5),
+                Text("we create the best quality products", textAlign: TextAlign.center, style: TextStyle(fontSize: 10),),
+                SizedBox(height: 5),
 
-                             SizedBox(height: 10),
-                             //TextField dien Password
-                             TextField(
-                               style: TextStyle(color: Colors.white),
-                               decoration: InputDecoration(
-                                 hintText: "PASSWORD",
-                                 hintStyle: TextStyle(color: Colors.white),
-                                 enabledBorder: OutlineInputBorder(
-                                   borderSide: BorderSide(color: Colors.white)
-                                 ),
-                                 focusedBorder: OutlineInputBorder(
-                                   borderSide: BorderSide(color: Colors.white)
-                                 ),
-                               ),
-                            ),
-
-                             SizedBox(height: 10),
-                           ]
-                         )
+                // Phan nut bam
+                SizedBox(
+                  width: 300,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                       backgroundColor: Colors.yellow,
+                       shape: RoundedRectangleBorder(
+                         borderRadius: BorderRadiusGeometry.zero
                        )
-                     ],
-                   )
-                 )
-               ),
-            
-               // Tao nut SignIn va ForgotPassword
-               Container(
-                 alignment: Alignment(0, 0.8),
-                 child: Column(
-                   mainAxisSize: MainAxisSize.min,
-                   children: [
-                     // Tao nut Sign In
-                     SizedBox(
-                       height: 35,
-                       width: 400,
-                       child: ElevatedButton(
-                         style: ElevatedButton.styleFrom(
-                           backgroundColor: Colors.deepOrange,
-                           shape: RoundedRectangleBorder(
-                             borderRadius: BorderRadiusGeometry.zero
-                           )
-                         ),
-                         onPressed: (){}, 
-                         child: (
-                           const Text("SIGN IN", style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold))
-                         )
-                       ),
-                     ),
-
-                     SizedBox(height: 5),
-
-                     // Tao nut ForgotPassword
-                     SizedBox(
-                       height: 30,
-                       width: 400,
-                       child: TextButton(
-                         onPressed: (){}, 
-                         child: Text("Forgot Password?", style: TextStyle(color: Colors.white, fontSize: 10),)
-                       ),
-                     ),
-                   ],
-                 ),
-               ),
-             ],
-           )
-         )
+                    ),
+                    onPressed: (){}, 
+                    child: Row(  
+                      mainAxisAlignment: MainAxisAlignment.end,                 
+                      children: [
+                         Text("Get Started", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                         SizedBox(width: 70),
+                         Icon(Icons.arrow_forward, color: Colors.black),
+                      ],
+                    )
+                  )
+                )                
+              ],             
+            ),
+          )
+        ]
       )
     );  
   }
@@ -157,3 +110,21 @@ class _LoginScreenState extends State<LoginScreen> {
 
 
 
+
+ 
+/*Container(
+            height: 400,
+            width: 400,
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                children: onBoardingScreen.map((image) {
+                  return Container(
+                    width: 400,
+                    height: 400,
+                    child: Image.asset(image, fit: BoxFit.cover)
+                  );
+                }).toList()
+              )              
+            )
+          ),*/
