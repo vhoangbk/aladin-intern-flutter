@@ -65,7 +65,6 @@ class _BoardingScreenState extends State<BoardingScreen> {
             itemBuilder: (context, index){
               return Column(
                 children: [
-                  //const SizedBox(height: 100),
                   Container(
                      height: 400,
                      width: double.infinity,
