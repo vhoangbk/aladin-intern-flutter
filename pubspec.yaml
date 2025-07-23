@@ -68,6 +68,8 @@ flutter:
    - assets/bong_da.jpeg
    - assets/bong_ro.jpeg
    - assets/cau_long.jpeg
+   - assets/google.png
+   - assets/psg.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
