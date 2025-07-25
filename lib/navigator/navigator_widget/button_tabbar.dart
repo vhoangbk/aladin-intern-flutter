@@ -39,7 +39,7 @@ class ButtonTabbar extends StatelessWidget
           ),
               
           Spacer(), // Tiêu đề ở giữa
-          Text(title, style: TextStyle(fontFamily: "Poppins", fontSize: 25, color: Colors.black),),  
+          Text(title, style: TextStyle(fontFamily: "Poppins", fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700),),  
           Spacer(), // Tiêu đề ở giữa
 
           // Xu li button goc phai 
