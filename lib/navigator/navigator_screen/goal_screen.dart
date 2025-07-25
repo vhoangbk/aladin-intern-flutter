@@ -116,7 +116,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             const SizedBox(height: 2),
                             Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 100),
-                              child: Divider(thickness: 0.2, color: Colors.white),
+                              child: Divider(thickness: 1, color: Colors.white),
                             ),
 
                             //Text dong 1
