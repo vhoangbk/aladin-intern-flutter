@@ -1,19 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:dna/navigator/navigator_screen/tabbar_screen.dart';
 import 'package:go_router/go_router.dart';
 
+// Màn hình 6
+
 class MainScreen extends StatefulWidget {
+  final bool fromLogin;
+  const MainScreen({super.key, required this.fromLogin});
+
   @override
   State<MainScreen> createState() => _StateMainScreen();
 }
 
 class _StateMainScreen extends State<MainScreen> {
+  
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
+
     return WillPopScope(
-      onWillPop: () async{
-        context.go('/welcome');
-        return false;        
+      onWillPop: () async {
+        context.go(
+          Uri(
+            path: '/welcome',
+            queryParameters: {'fromLogin': widget.fromLogin.toString()},
+          ).toString(),
+        );
+        return false;
       },
       child: Scaffold(
         body: SafeArea(
@@ -52,9 +64,7 @@ class _StateMainScreen extends State<MainScreen> {
                       ),
                     ),
                     onPressed: () {
-                      Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => TabbarScreen()));
+                      context.go('/tabbar');
                     },
                     child: Text("Go to home", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"))
                   ),

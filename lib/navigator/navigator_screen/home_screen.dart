@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
+// Màn hình 1
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -38,7 +38,7 @@ class _StateHomeScreen extends State<HomeScreen> {
                       style: TextStyle(
                           fontSize: 36,
                           color: Colors.black,
-                          fontFamily: "Poppins",
+                          fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
@@ -46,7 +46,7 @@ class _StateHomeScreen extends State<HomeScreen> {
                       style: TextStyle(
                           fontSize: 50,
                           color: Colors.deepPurpleAccent,
-                          fontFamily: "Poppins",
+                          fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
                           fontWeight: FontWeight.w700),
                     ),
                   ],
@@ -57,7 +57,7 @@ class _StateHomeScreen extends State<HomeScreen> {
                 Text("Everybody can train", style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
-                  fontFamily: "Poppins",
+                  fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
                   fontWeight: FontWeight.w400
                 ),),
               ],

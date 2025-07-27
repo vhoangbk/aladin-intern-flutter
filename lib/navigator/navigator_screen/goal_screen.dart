@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-
+// Màn hình 4
 
 class GoalScreen extends StatefulWidget {
   @override
@@ -51,17 +51,17 @@ class _StateGoalScreen extends State<GoalScreen> {
               //Phan text tren cung
               const Text(
                 "What is your goal ?",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins"),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
               ),
               const SizedBox(height: 8),
               const Text(
                 "It will help us to choose a best",
-                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "Poppins"),
+                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
               ),
               const SizedBox(height: 3),
               const Text(
                 "program for you",
-                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "Poppins"),
+                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
               ),
               const SizedBox(height: 16),
 
@@ -108,7 +108,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                                 color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: "Poppins"
+                                fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"
                               ),
                             ),
 
@@ -124,7 +124,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             Text(
                               page["description"]!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
                             ),
 
                             // Text dong 2
@@ -132,7 +132,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             Text(
                               page["description2"]!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
                             ),
 
                             // Text dong 3
@@ -140,7 +140,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             Text(
                               page["description3"]!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
                             ),
                           ],
                         ),
@@ -172,7 +172,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontFamily: "Poppins"
+                        fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"
                       ),
                     ),
                   ),

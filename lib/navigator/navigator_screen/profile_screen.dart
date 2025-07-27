@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+// Màn hình 3
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -60,11 +61,11 @@ class _StateProfileScreen extends State<ProfileScreen> {
                   padding: EdgeInsets.symmetric(horizontal: 24),
                   child: Column(
                     children: [
-                      Text("Let's complete your profile", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins"), textAlign: TextAlign.center,),
+                      Text("Let's complete your profile", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"), textAlign: TextAlign.center,),
                       SizedBox(height: 3),
                       Text(
                         "It will help us to know more about you!",
-                        style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+                        style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
                         textAlign: TextAlign.center,
                       ),
                       SizedBox(height: 10),
@@ -198,7 +199,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text("Next", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"),),
+                          Text("Next", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),),
                           SizedBox(width: 10),
                           Icon(Icons.arrow_right_alt_rounded, color: Colors.white)                          
                         ],

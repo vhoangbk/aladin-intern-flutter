@@ -1,3 +1,4 @@
+import 'package:dna/navigator/navigator_screen/tabbar_screen.dart';
 import 'package:go_router/go_router.dart';
 import 'package:dna/navigator/navigator_screen/home_screen.dart';
 import 'package:dna/navigator/navigator_screen/create_account_screen.dart';
@@ -31,11 +32,18 @@ final GoRouter router = GoRouter(
 
     GoRoute(
       path: '/welcome',
-      builder: (context, state) => WelcomeScreen(),
+      builder: (context, state) => WelcomeScreen(),       
     ),
     GoRoute(
       path: '/main',
-      builder: (context, state) => MainScreen(),
+      builder: (context, state) {
+        final fromLogin = state.uri.queryParameters['fromLogin'] == 'true';
+        return MainScreen(fromLogin: fromLogin);
+      } 
+    ),
+    GoRoute(
+      path: '/tabbar',
+      builder: (context, state) => TabbarScreen(),    
     ),
   ]
 );

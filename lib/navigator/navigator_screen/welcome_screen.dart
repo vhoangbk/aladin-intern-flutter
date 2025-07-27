@@ -5,21 +5,36 @@ import 'package:dna/navigator/navigator_widget/input_widget.dart';
 import 'package:go_router/go_router.dart';
 
 
+// Màn hình 5
+
 class WelcomeScreen extends StatefulWidget {
+  const WelcomeScreen({
+    super.key,
+  });
   @override
   State<WelcomeScreen> createState() => _StateWelcomeScreen();
 }
 
+
+
 class _StateWelcomeScreen extends State<WelcomeScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
-
+   
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    
+    final fromLogin = GoRouterState.of(context).uri.queryParameters['fromLogin'] == 'true';
+
+    return WillPopScope(      
       onWillPop:() async{
-        context.go('/goal'); // Quay lại HomeScreen
-        return false; // Ngăn pop mặc định
+        if (fromLogin) {
+          context.go('/createprofile'); // quay lại màn 2
+          return false;
+        } else {
+          context.go('/goal'); // hoặc context.go('/profile'); tùy trường hợp
+          return false;
+        }
       },
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -38,8 +53,8 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            Text("Hey there,", style: TextStyle(fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
-                            Text("Welcome back",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
+                            Text("Hey there,", style: TextStyle(fontSize: 16, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400)),
+                            Text("Welcome back",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
                             buildInput(
                               icon: Icon(Icons.email),
                               hint: "Email",
@@ -53,7 +68,7 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
                               obscure: true
                             ),
                             SizedBox(height: 5),
-                            Text("Forgot your password?", style: TextStyle(decoration: TextDecoration.underline, fontSize: 12, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w500)),
+                            Text("Forgot your password?", style: TextStyle(decoration: TextDecoration.underline, fontSize: 12, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w500)),
                             Spacer(),
                             Padding(
                               padding: const EdgeInsets.all(16.0),
@@ -68,14 +83,20 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    context.go('/main');                             
+                                    //context.go('/main');  
+                                    context.go(
+                                      Uri(
+                                        path: '/main',
+                                        queryParameters: {'fromLogin': 'true'},
+                                      ).toString(),
+                                    );      
                                   },
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(Icons.login, color: Colors.white),
                                       SizedBox(width: 10),
-                                      Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: "Poppins")),
+                                      Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
                                     ],
                                   ),
                                 ),
@@ -89,7 +110,7 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Text(" Or ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Inter")),
+                                  child: Text(" Or ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Inter/Inter-Italic-VariableFont_opsz,wght.ttf")),
                                 ),
                                 Expanded(
                                   child: Divider(thickness: 1, color: Colors.grey),
@@ -140,4 +161,9 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
     );    
   }
 }
+
+/*context.go('/goal'); // Quay lại HomeScreen
+        return false; // Ngăn pop mặc định*/
+
+// ✅ WelcomeScreen.dart (updated to meet your exact logic)
 

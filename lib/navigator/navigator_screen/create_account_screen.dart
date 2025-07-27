@@ -4,6 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+// Màn hình 2
+
 class CreateAccountScreen extends StatefulWidget {
   @override
   State<CreateAccountScreen> createState() => _StateCreateAccountScreen();
@@ -19,8 +21,8 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        context.go('/'); // Quay lại HomeScreen
-        return false; // Ngăn pop mặc định
+        //context.go('/'); // Quay lại HomeScreen
+        return true; // Ngăn pop mặc định
       },
       child: GestureDetector(
         onTap: () {
@@ -41,8 +43,8 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           //Text
-                          Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "Poppins")),
-                          Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins")),
+                          Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
+                          Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
                           SizedBox(height: 20),
 
                           //Cac o nhap lieu
@@ -72,7 +74,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                                 child: Text.rich(
                                   TextSpan(
                                     text: "By continuing your accept our ",
-                                    style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400),
+                                    style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400),
                                     children: [
                                       TextSpan(
                                           text: "Privacy Policy",
@@ -80,11 +82,11 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                                               decoration: TextDecoration.underline,
                                               fontSize: 10,
                                               color: Colors.grey, 
-                                              fontFamily: "Poppins", 
+                                              fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
                                               fontWeight: FontWeight.w400)),
                                       TextSpan(
                                         text: " and ",
-                                        style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400),
+                                        style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400),
                                       ),
                                       TextSpan(
                                           text: "Term of use",
@@ -92,7 +94,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                                               decoration: TextDecoration.underline,
                                               fontSize: 10,
                                               color: Colors.black,
-                                              fontFamily: "Poppins", 
+                                              fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", 
                                               fontWeight: FontWeight.w400
                                           )
                                       ),
@@ -119,7 +121,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               onPressed: () {                               
                                 context.go('/profile');
                               },                   
-                              child: Text("Register", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
+                              child: Text("Register", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
                             )
                           ),
 
@@ -133,7 +135,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(" Or ", style: TextStyle(fontSize: 14, fontFamily: "Inter", fontWeight: FontWeight.w400)),
+                                child: Text(" Or ", style: TextStyle(fontSize: 14, fontFamily: "assets/font_Inter/Inter-Italic-VariableFont_opsz,wght.ttf", fontWeight: FontWeight.w400)),
                               ),
                               Expanded(
                                 child: Divider(thickness: 1, color: Colors.grey),
@@ -154,15 +156,20 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               RichText(
                                 text: TextSpan(
                                   text: "Already have an account? ",
-                                  style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.black),
+                                  style: TextStyle(fontSize: 14, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400, color: Colors.black),
                                   children: [
                                     TextSpan(
                                       text: "Login",
-                                      style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.pinkAccent),
+                                      style: TextStyle(fontSize: 14, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400, color: Colors.pinkAccent),
                                       //An vao login se chuyen sang trang dang nhap 
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = (){
-                                          context.go('/welcome');
+                                          context.go(
+                                            Uri(
+                                              path: '/welcome',
+                                              queryParameters: {'fromLogin' : 'true'}
+                                            ).toString()
+                                          );                                          
                                         }
                                     )
                                   ]
