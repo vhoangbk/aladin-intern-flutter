@@ -1,5 +1,7 @@
+import 'package:dna/navigator/navigator_screen/tabbar_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+
 
 // Màn hình 6
 
@@ -17,15 +19,12 @@ class _StateMainScreen extends State<MainScreen> {
   @override
   Widget build(BuildContext context){
 
-    return WillPopScope(
-      onWillPop: () async {
-        context.go(
-          Uri(
-            path: '/welcome',
-            queryParameters: {'fromLogin': widget.fromLogin.toString()},
-          ).toString(),
-        );
-        return false;
+    return PopScope(
+      canPop: true, 
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop) {
+          Navigator.of(context).pop(); // Quay về WelcomeScreen
+        }
       },
       child: Scaffold(
         body: SafeArea(
@@ -64,7 +63,7 @@ class _StateMainScreen extends State<MainScreen> {
                       ),
                     ),
                     onPressed: () {
-                      context.go('/tabbar');
+                      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (_) => TabbarScreen()));
                     },
                     child: Text("Go to home", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"))
                   ),
@@ -77,6 +76,7 @@ class _StateMainScreen extends State<MainScreen> {
     );
   }
 }
+
 
 
 

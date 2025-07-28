@@ -31,8 +31,8 @@ final GoRouter router = GoRouter(
     ),
 
     GoRoute(
-      path: '/welcome',
-      builder: (context, state) => WelcomeScreen(),       
+      path: '/welcome',  
+      builder: (context, state) => WelcomeScreen(fromLogin: true),
     ),
     GoRoute(
       path: '/main',
@@ -45,5 +45,5 @@ final GoRouter router = GoRouter(
       path: '/tabbar',
       builder: (context, state) => TabbarScreen(),    
     ),
-  ]
+  ],
 );

@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'welcome_screen.dart';
 
 // Màn hình 4
 
@@ -37,14 +38,8 @@ class _StateGoalScreen extends State<GoalScreen> {
   ];
 
   @override
-  Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () async{
-        context.go('/profile');
-        return false;        
-      },
-           
-      child: Scaffold(
+  Widget build(BuildContext context) {        
+      return Scaffold(
         body: SafeArea(
           child: Column(
             children: [
@@ -164,7 +159,9 @@ class _StateGoalScreen extends State<GoalScreen> {
                       ),
                     ),
                     onPressed: () {                   
-                      context.go('/welcome');
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (_) => const WelcomeScreen(fromLogin: true,)));
                     },
                     child: const Text(
                       "Confirm",
@@ -181,8 +178,8 @@ class _StateGoalScreen extends State<GoalScreen> {
             ],
           ),
         ),
-      ),
-    );
+      );
+    
   }
 }
 

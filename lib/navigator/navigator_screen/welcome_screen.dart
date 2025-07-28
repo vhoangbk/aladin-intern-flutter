@@ -1,43 +1,50 @@
-import 'package:dna/navigator/navigator_widget/social_button_widget.dart';
-import 'package:flutter/gestures.dart';
+import 'package:dna/navigator/navigator_screen/create_account_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
+import 'package:dna/navigator/navigator_screen/main_screen.dart';
 import 'package:dna/navigator/navigator_widget/input_widget.dart';
-import 'package:go_router/go_router.dart';
-
+import 'package:dna/navigator/navigator_widget/social_button_widget.dart';
+import 'package:dna/navigator/navigator_widget/navigator_helper.dart';
 
 // Màn hình 5
-
 class WelcomeScreen extends StatefulWidget {
-  const WelcomeScreen({
-    super.key,
-  });
+  final bool fromLogin; // ✅ Nhận giá trị truyền vào để phân biệt luồng
+  const WelcomeScreen({super.key, required this.fromLogin});
+
   @override
-  State<WelcomeScreen> createState() => _StateWelcomeScreen();
+  State<WelcomeScreen> createState() => _WelcomeScreenState();
 }
 
-
-
-class _StateWelcomeScreen extends State<WelcomeScreen> {
-  final TextEditingController _passwordController = TextEditingController();
+class _WelcomeScreenState extends State<WelcomeScreen> {
   final TextEditingController _emailController = TextEditingController();
-   
+  final TextEditingController _passwordController = TextEditingController();
+
+
+  // Xử lý nút back Android hoặc gesture swipe thủ công
+  Future<bool> _handleBack() async {
+    if (Navigator.of(context).canPop()) {
+      Navigator.of(context).pop();
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
-    
-    final fromLogin = GoRouterState.of(context).uri.queryParameters['fromLogin'] == 'true';
-
-    return WillPopScope(      
-      onWillPop:() async{
-        if (fromLogin) {
-          context.go('/createprofile'); // quay lại màn 2
-          return false;
-        } else {
-          context.go('/goal'); // hoặc context.go('/profile'); tùy trường hợp
-          return false;
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result){
+        if(!didPop){
+          Navigator.push(context, CupertinoPageRoute(builder: (_) => MainScreen(fromLogin: true))); 
         }
       },
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
+        onHorizontalDragUpdate: (details) {
+          if (details.delta.dx > 10) {
+            _handleBack(); // Vuốt sang phải để quay lại
+          }
+        },
         child: Scaffold(
           resizeToAvoidBottomInset: false,
           body: LayoutBuilder(
@@ -46,109 +53,91 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraints.maxHeight),
                   child: IntrinsicHeight(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text("Hey there,", style: TextStyle(fontSize: 16, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400)),
-                            Text("Welcome back",style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
-                            buildInput(
-                              icon: Icon(Icons.email),
-                              hint: "Email",
-                              controller: _emailController
-                            ),
-                            SizedBox(height: 10),
-                            buildInput(
-                              icon: Icon(Icons.lock),
-                              hint: "Password",
-                              controller: _passwordController,
-                              obscure: true
-                            ),
-                            SizedBox(height: 5),
-                            Text("Forgot your password?", style: TextStyle(decoration: TextDecoration.underline, fontSize: 12, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w500)),
-                            Spacer(),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: SizedBox(
-                                height: 50,
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: Colors.blueAccent,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                  ),
-                                  onPressed: () {
-                                    //context.go('/main');  
-                                    context.go(
-                                      Uri(
-                                        path: '/main',
-                                        queryParameters: {'fromLogin': 'true'},
-                                      ).toString(),
-                                    );      
-                                  },
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.login, color: Colors.white),
-                                      SizedBox(width: 10),
-                                      Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
-                                    ],
-                                  ),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 60),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text("Hey there,", style: TextStyle(fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
+                          Text("Welcome back", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
+                          buildInput(icon: Icon(Icons.email), hint: "Email", controller: _emailController),
+                          SizedBox(height: 10),
+                          buildInput(icon: Icon(Icons.lock), hint: "Password", controller: _passwordController, obscure: true),
+                          SizedBox(height: 5),
+                          Text("Forgot your password?",
+                              style: TextStyle(
+                                  decoration: TextDecoration.underline,
+                                  fontSize: 12,
+                                  color: Colors.grey,
+                                  fontFamily: "Poppins",
+                                  fontWeight: FontWeight.w500)),
+                          Spacer(),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: SizedBox(
+                              height: 50,
+                              width: double.infinity,
+                              child: ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.blueAccent,
+                                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                                ),
+                                onPressed: () {
+                                  NavigationHelper.pushCupertino(context, const MainScreen(fromLogin: true));
+
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.login, color: Colors.white),
+                                    SizedBox(width: 10),
+                                    Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: "Poppins")),
+                                  ],
                                 ),
                               ),
                             ),
-                            SizedBox(height: 3),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Divider(thickness: 1, color: Colors.grey),
+                          ),
+                          SizedBox(height: 3),
+                          Row(
+                            children: [
+                              Expanded(child: Divider(thickness: 1, color: Colors.grey)),
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                child: Text(" Or ",
+                                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Inter")),
+                              ),
+                              Expanded(child: Divider(thickness: 1, color: Colors.grey)),
+                            ],
+                          ),
+                          SizedBox(height: 3),
+                          SocialButton(),
+                          SizedBox(height: 10),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              RichText(
+                                text: TextSpan(
+                                  text: "Don't have an account yet? ",
+                                  style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.black),
+                                  children: [
+                                    TextSpan(
+                                      text: "Register",
+                                      style: TextStyle(
+                                          fontSize: 14,
+                                          fontFamily: "Poppins",
+                                          fontWeight: FontWeight.w400,
+                                          color: Colors.pinkAccent),
+                                      recognizer: TapGestureRecognizer()
+                                        ..onTap = () {
+                                          NavigationHelper.pushCupertino(context, CreateAccountScreen());
+                                        },
+                                    ),
+                                  ],
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                  child: Text(" Or ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Inter/Inter-Italic-VariableFont_opsz,wght.ttf")),
-                                ),
-                                Expanded(
-                                  child: Divider(thickness: 1, color: Colors.grey),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: 3),
-
-                            //Nút button gg và facebook
-                            SocialButton(),
-                            
-                            // Phan Text duoi cung
-                            SizedBox(height: 10),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                RichText(
-                                  text: TextSpan(
-                                    text: "Don't have an account yet? ",
-                                    style: TextStyle(fontSize: 14, fontFamily: String.fromEnvironment("Poppins"), fontWeight: FontWeight.w400, color: Colors.black),
-
-                                    // Xu li Register dieu huong
-                                    children: [
-                                      TextSpan(
-                                        text: "Register",
-                                        style: TextStyle(fontSize: 14, fontFamily: String.fromEnvironment("Poppins"), fontWeight: FontWeight.w400, color: Colors.pinkAccent),
-                                        recognizer: TapGestureRecognizer()
-                                          ..onTap = () {
-                                            context.go('/createprofile');
-                                          }
-                                      ) 
-                                    ]
-                                  )
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
+                              ),
+                            ],
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -157,13 +146,7 @@ class _StateWelcomeScreen extends State<WelcomeScreen> {
             },
           ),
         ),
-      )  
-    );    
+      ),
+    );
   }
 }
-
-/*context.go('/goal'); // Quay lại HomeScreen
-        return false; // Ngăn pop mặc định*/
-
-// ✅ WelcomeScreen.dart (updated to meet your exact logic)
-

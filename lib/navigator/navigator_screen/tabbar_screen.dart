@@ -3,6 +3,7 @@ import 'package:dna/navigator/navigator_tabbar/progess_photo_tabbar.dart';
 import 'package:dna/navigator/navigator_tabbar/schedule_tabbar.dart';
 import 'package:dna/navigator/navigator_tabbar/home_tabbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 // Màn hình 7
 
@@ -33,10 +34,13 @@ class _StateTabbarScreen extends  State<TabbarScreen>
 
   Widget build (BuildContext context)
   {
-    return WillPopScope(
-      onWillPop: () async {
-        return true;
-      }, 
+    return PopScope(
+      canPop: false,
+      onPopInvokedWithResult: (didPop, result) {
+        if (!didPop){
+           SystemNavigator.pop();
+        }
+      },
       child: Scaffold(
         body: _screen[_selectedIndex],
         extendBody: true,
