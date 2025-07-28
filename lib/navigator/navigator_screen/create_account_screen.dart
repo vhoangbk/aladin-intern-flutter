@@ -55,8 +55,8 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
-                          Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
+                          Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "Poppins")),
+                          Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins")),
                           SizedBox(height: 20),
 
                           buildInput(icon: Icon(Icons.person_outline), hint: "First name", controller: _firstNameController),
@@ -71,18 +71,18 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                                 child: Text.rich(
                                   TextSpan(
                                     text: "By continuing your accept our ",
-                                    style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400),
+                                    style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400),
                                     children: [
                                       TextSpan(
                                           text: "Privacy Policy",
-                                          style: TextStyle(decoration: TextDecoration.underline, fontSize: 10, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400)),
+                                          style: TextStyle(decoration: TextDecoration.underline, fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
                                       TextSpan(
                                         text: " and ",
-                                        style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400),
+                                        style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400),
                                       ),
                                       TextSpan(
                                           text: "Term of use",
-                                          style: TextStyle(decoration: TextDecoration.underline, fontSize: 10, color: Colors.black, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400)),
+                                          style: TextStyle(decoration: TextDecoration.underline, fontSize: 10, color: Colors.black, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
                                     ],
                                   ),
                                 ),
@@ -104,7 +104,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               onPressed: () {
                                 Navigator.push(context, CupertinoPageRoute(builder: (_) => ProfileScreen()));
                               },
-                              child: Text("Register", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
+                              child: Text("Register", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
                             ),
                           ),
 
@@ -115,7 +115,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(" Or ", style: TextStyle(fontSize: 14, fontFamily: "assets/font_Inter/Inter-Italic-VariableFont_opsz,wght.ttf", fontWeight: FontWeight.w400)),
+                                child: Text(" Or ", style: TextStyle(fontSize: 14, fontFamily: "Inter-Italic-VariableFont_opsz,wght", fontWeight: FontWeight.w400)),
                               ),
                               Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                             ],
@@ -131,15 +131,14 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               RichText(
                                 text: TextSpan(
                                   text: "Already have an account? ",
-                                  style: TextStyle(fontSize: 14, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400, color: Colors.black),
+                                  style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.black),
                                   children: [
                                     TextSpan(
                                       text: "Login",
-                                      style: TextStyle(fontSize: 14, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf", fontWeight: FontWeight.w400, color: Colors.pinkAccent),
+                                      style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.pinkAccent),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {
                                           NavigationHelper.pushCupertino(context, WelcomeScreen(fromLogin: true));
-
                                         },
                                     )
                                   ],

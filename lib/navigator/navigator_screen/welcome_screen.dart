@@ -6,10 +6,11 @@ import 'package:dna/navigator/navigator_screen/main_screen.dart';
 import 'package:dna/navigator/navigator_widget/input_widget.dart';
 import 'package:dna/navigator/navigator_widget/social_button_widget.dart';
 import 'package:dna/navigator/navigator_widget/navigator_helper.dart';
+import 'package:go_router/go_router.dart';
 
 // Màn hình 5
 class WelcomeScreen extends StatefulWidget {
-  final bool fromLogin; // ✅ Nhận giá trị truyền vào để phân biệt luồng
+  final bool fromLogin; //  Nhận giá trị truyền vào để phân biệt luồng
   const WelcomeScreen({super.key, required this.fromLogin});
 
   @override
@@ -24,7 +25,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   // Xử lý nút back Android hoặc gesture swipe thủ công
   Future<bool> _handleBack() async {
     if (Navigator.of(context).canPop()) {
-      Navigator.of(context).pop();
+      Navigator.of(context).push(CupertinoPageRoute(builder: (_) => CreateAccountScreen()));
     }
     return false;
   }
@@ -35,7 +36,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       canPop: false,
       onPopInvokedWithResult: (didPop, result){
         if(!didPop){
-          Navigator.push(context, CupertinoPageRoute(builder: (_) => MainScreen(fromLogin: true))); 
+          context.push('/createprofile');
         }
       },
       child: GestureDetector(
@@ -150,3 +151,5 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 }
+
+

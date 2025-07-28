@@ -1,7 +1,7 @@
 import 'package:dna/navigator/navigator_screen/goal_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dna/navigator/navigator_widget/navigator_helper.dart';
+
 
 class ProfileScreen extends StatefulWidget {
   @override
@@ -50,7 +50,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                 height: MediaQuery.of(context).size.height * 0.35,
                 width: double.infinity,
                 child: Image.asset(
-                  "assets/DNA_BLUE_2103.png",
+                  "assets/images/DNA_BLUE_2103.png",
                   fit: BoxFit.cover,
                 ),
               ),
@@ -62,12 +62,12 @@ class _StateProfileScreen extends State<ProfileScreen> {
                 child: Column(
                   children: [
                     Text("Let's complete your profile",
-                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins"),
                         textAlign: TextAlign.center),
                     SizedBox(height: 3),
                     Text(
                       "It will help us to know more about you!",
-                      style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                      style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(height: 10),
@@ -186,7 +186,11 @@ class _StateProfileScreen extends State<ProfileScreen> {
                   width: double.infinity,
                   child: ElevatedButton(
                     onPressed: () {
-                      NavigationHelper.pushCupertino(context, GoalScreen());
+                      Navigator.push(
+                        context,
+                        CupertinoPageRoute(builder: (_) => GoalScreen()),
+                      );
+
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueAccent,
@@ -195,7 +199,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Next", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf")),
+                        Text("Next", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
                         SizedBox(width: 10),
                         Icon(Icons.arrow_right_alt_rounded, color: Colors.white),
                       ],

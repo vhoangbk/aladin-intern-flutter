@@ -38,7 +38,7 @@ class _StateMainScreen extends State<MainScreen> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.4,
                   width: double.infinity,
-                  child: Image.asset("assets/juventus.jpg"),
+                  child: Image.asset("assets/images/juventus.jpg"),
                 ),
 
                 // Phan Text o duoi

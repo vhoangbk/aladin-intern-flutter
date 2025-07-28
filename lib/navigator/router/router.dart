@@ -34,6 +34,7 @@ final GoRouter router = GoRouter(
       path: '/welcome',  
       builder: (context, state) => WelcomeScreen(fromLogin: true),
     ),
+
     GoRoute(
       path: '/main',
       builder: (context, state) {

@@ -14,7 +14,7 @@ class SocialButton extends StatelessWidget
           width: 50,
           child: ElevatedButton(
             onPressed: () {},
-            child: Image.asset("assets/google.png"),
+            child: Image.asset("assets/images/google.png"),
             style: ElevatedButton.styleFrom(
               padding: EdgeInsets.all(12),
               shape: RoundedRectangleBorder(

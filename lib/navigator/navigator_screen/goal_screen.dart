@@ -15,21 +15,21 @@ class _StateGoalScreen extends State<GoalScreen> {
 
   final List<Map<String, String>> pages = [
     {
-      "image": "assets/bong_da.jpeg",
+      "image": "assets/images/bong_da.jpeg",
       "title": "Improve Shape",
       "description": "I have a low amount of body fat",
       "description2": "and need / want to build more",
       "description3": "muscle"
     },
     {
-      "image": "assets/bong_ro.jpeg",
+      "image": "assets/images/bong_ro.jpeg",
       "title": "Lean & Tone",
       "description": "I'm 'skinny fat', look thin but have",
       "description2": "no shape. I want to learn to build",
       "description3": "muscle in the right way"
     },
     {
-      "image": "assets/cau_long.jpeg",
+      "image": "assets/images/cau_long.jpeg",
       "title": "Lose a Fat",
       "description": "I have over 20 lbs to lose. I want to",
       "description2": "drop all this fat and gain muscle",
@@ -46,17 +46,17 @@ class _StateGoalScreen extends State<GoalScreen> {
               //Phan text tren cung
               const Text(
                 "What is your goal ?",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins"),
               ),
               const SizedBox(height: 8),
               const Text(
                 "It will help us to choose a best",
-                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "Poppins"),
               ),
               const SizedBox(height: 3),
               const Text(
                 "program for you",
-                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "Poppins"),
               ),
               const SizedBox(height: 16),
 
@@ -103,7 +103,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                                 color: Colors.white,
                                 fontSize: 14,
                                 fontWeight: FontWeight.w600,
-                                fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"
+                                fontFamily: "Poppins"
                               ),
                             ),
 
@@ -119,7 +119,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             Text(
                               page["description"]!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                             ),
 
                             // Text dong 2
@@ -127,7 +127,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             Text(
                               page["description2"]!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                             ),
 
                             // Text dong 3
@@ -135,7 +135,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                             Text(
                               page["description3"]!,
                               textAlign: TextAlign.center,
-                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"),
+                              style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                             ),
                           ],
                         ),
@@ -169,7 +169,7 @@ class _StateGoalScreen extends State<GoalScreen> {
                         fontSize: 16,
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
-                        fontFamily: "assets/font_Poppin/Poppins-Bold.ttf"
+                        fontFamily: "Poppins"
                       ),
                     ),
                   ),

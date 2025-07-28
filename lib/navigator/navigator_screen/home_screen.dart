@@ -38,7 +38,7 @@ class _StateHomeScreen extends State<HomeScreen> {
                       style: TextStyle(
                           fontSize: 36,
                           color: Colors.black,
-                          fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
+                          fontFamily: "Poppins",
                           fontWeight: FontWeight.w700),
                     ),
                     Text(
@@ -46,7 +46,7 @@ class _StateHomeScreen extends State<HomeScreen> {
                       style: TextStyle(
                           fontSize: 50,
                           color: Colors.deepPurpleAccent,
-                          fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
+                          fontFamily: "Poppins",
                           fontWeight: FontWeight.w700),
                     ),
                   ],
@@ -57,7 +57,7 @@ class _StateHomeScreen extends State<HomeScreen> {
                 Text("Everybody can train", style: TextStyle(
                   fontSize: 18,
                   color: Colors.grey,
-                  fontFamily: "assets/font_Poppin/Poppins-Bold.ttf",
+                  fontFamily: "Poppins",
                   fontWeight: FontWeight.w400
                 ),),
               ],
