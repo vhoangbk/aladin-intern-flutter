@@ -1,5 +1,6 @@
 import 'package:dna/navigator/navigator_screen/profile_screen.dart';
 import 'package:dna/navigator/navigator_screen/welcome_screen.dart';
+import 'package:dna/navigator/navigator_widget/language_button.dart';
 import 'package:dna/navigator/navigator_widget/navigator_helper.dart';
 import 'package:dna/navigator/navigator_widget/social_button_widget.dart';
 import 'package:dna/navigator/navigator_widget/input_widget.dart';
@@ -55,8 +56,29 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "Poppins")),
-                          Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins")),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                // Text
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "Poppins")),
+                                    Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins")),
+                                  ],                       
+                                ),
+
+                                // Nut o goc phai
+                                Positioned(
+                                  right: 0,
+                                  top: 0,
+                                  child: LanguageButton()
+                                )
+                              ],
+                            )
+                          ),
                           SizedBox(height: 20),
 
                           buildInput(icon: Icon(Icons.person_outline), hint: "First name", controller: _firstNameController),

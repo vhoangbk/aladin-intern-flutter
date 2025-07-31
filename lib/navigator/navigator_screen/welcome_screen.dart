@@ -6,7 +6,6 @@ import 'package:dna/navigator/navigator_screen/main_screen.dart';
 import 'package:dna/navigator/navigator_widget/input_widget.dart';
 import 'package:dna/navigator/navigator_widget/social_button_widget.dart';
 import 'package:dna/navigator/navigator_widget/navigator_helper.dart';
-import 'package:go_router/go_router.dart';
 
 // Màn hình 5
 class WelcomeScreen extends StatefulWidget {
@@ -25,7 +24,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   // Xử lý nút back Android hoặc gesture swipe thủ công
   Future<bool> _handleBack() async {
     if (Navigator.of(context).canPop()) {
-      Navigator.of(context).push(CupertinoPageRoute(builder: (_) => CreateAccountScreen()));
+      Navigator.of(context).maybePop();
     }
     return false;
   }
@@ -33,16 +32,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return PopScope(
-      canPop: false,
+      canPop: true,
       onPopInvokedWithResult: (didPop, result){
         if(!didPop){
-          context.push('/createprofile');
+          Navigator.of(context).maybePop();
         }
       },
       child: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         onHorizontalDragUpdate: (details) {
-          if (details.delta.dx > 10) {
+          if (details.delta.dx > 5) {
             _handleBack(); // Vuốt sang phải để quay lại
           }
         },

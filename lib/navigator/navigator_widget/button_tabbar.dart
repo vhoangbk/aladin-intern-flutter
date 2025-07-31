@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:dna/navigator/navigator_widget/language_button.dart';
 
 class ButtonTabbar extends StatelessWidget
 {
@@ -19,8 +19,10 @@ class ButtonTabbar extends StatelessWidget
       width: double.infinity, 
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 60),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Xu li button goc trai
+          
           SizedBox(
             height: 40,
             width: 40,
@@ -32,34 +34,48 @@ class ButtonTabbar extends StatelessWidget
                 )
               ),                 
               onPressed: () {
-                context.pop();
+                //context.pop();
               },
               child: Text("<"),                
             ),
           ),
+          
               
           Spacer(), // Tiêu đề ở giữa
           Text(title, style: TextStyle(fontFamily: "Poppins", fontSize: 16, color: Colors.black, fontWeight: FontWeight.w700),),  
           Spacer(), // Tiêu đề ở giữa
 
           // Xu li button goc phai 
-          SizedBox(
-            height: 40,
-            width: 40,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadiusGeometry.circular(6)
-                )
-              ),                 
-              onPressed: (){}, 
-              child: Text(".."),                
+          Container(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 40,
+                  width: 40,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.zero,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusGeometry.circular(6)
+                      )
+                    ),                 
+                    onPressed: (){}, 
+                    child: Text(".."),                
+                  ),
+                ),
+                SizedBox(height: 10),
+                LanguageButton()
+              ],
             ),
-          ),      
+          )   
         ]
       )
     );
   }
 }
+
+
+
+
 

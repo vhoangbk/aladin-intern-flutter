@@ -1,5 +1,8 @@
+import 'package:dna/navigator/navigator_screen/create_account_screen.dart';
+import 'package:dna/navigator/navigator_screen/tabbar_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // Màn hình 1
 
@@ -11,10 +14,25 @@ class HomeScreen extends StatefulWidget {
 class _StateHomeScreen extends State<HomeScreen> {
   @override
   void initState() {
-    super.initState();
-    Future.delayed(Duration.zero, () {
-      FocusScope.of(context).unfocus();
-    });
+    super.initState();  
+    _checkLoginAndRedirect();
+  }
+  
+  // Sau 1s se chuyen sang man hinh 
+  Future<void> _checkLoginAndRedirect() async {
+    await Future.delayed(const Duration(seconds: 1));
+    
+    //Xu li khi dang nhap se luu 
+    final prefs = await SharedPreferences.getInstance();
+    final isLoggedIn = prefs.getBool('isLoggedIn') ?? false;
+
+    if(isLoggedIn){
+      Navigator.push(context, CupertinoPageRoute(builder: (_) => TabbarScreen()));
+    } 
+    else {
+      Navigator.push(context, CupertinoPageRoute(builder: (_) => CreateAccountScreen()));
+    }
+
   }
 
   @override
@@ -24,65 +42,43 @@ class _StateHomeScreen extends State<HomeScreen> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 32),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox(),
-            Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [           
+            //Text ở trung tâm
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                //Text ở trung tâm
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Fitnest",
-                      style: TextStyle(
-                          fontSize: 36,
-                          color: Colors.black,
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w700),
-                    ),
-                    Text(
-                      "X",
-                      style: TextStyle(
-                          fontSize: 50,
-                          color: Colors.deepPurpleAccent,
-                          fontFamily: "Poppins",
-                          fontWeight: FontWeight.w700),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 8),
-
-                //Text ở dòng dưới
-                Text("Everybody can train", style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.grey,
-                  fontFamily: "Poppins",
-                  fontWeight: FontWeight.w400
-                ),),
-              ],
-            ),
-
-            //Button 
-            SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blueAccent,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                Text(
+                  "Fitnest",
+                  style: TextStyle(
+                    fontSize: 36,
+                    color: Colors.black,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w700
                   ),
                 ),
-                onPressed: () {
-                  context.go('/createprofile');
-                },
-                child: Text(
-                  "Get Started",
-                  style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"),
+                Text(
+                  "X",
+                  style: TextStyle(
+                    fontSize: 50,
+                    color: Colors.deepPurpleAccent,
+                    fontFamily: "Poppins",
+                    fontWeight: FontWeight.w700
+                  ),
                 ),
-              ),
+              ],
             ),
+            SizedBox(height: 8),
+
+            //Text ở dòng dưới
+            Text("Everybody can train", 
+              style: TextStyle(
+                fontSize: 18,
+                color: Colors.grey,
+                fontFamily: "Poppins",
+                fontWeight: FontWeight.w400
+              ),
+            ),            
           ],
         ),
       ),

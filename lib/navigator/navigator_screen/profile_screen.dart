@@ -14,8 +14,6 @@ class _StateProfileScreen extends State<ProfileScreen> {
   final TextEditingController _weightController = TextEditingController();
   final TextEditingController _heightController = TextEditingController();
 
-  
-  
 
   // Tạo lịch chọn ngày sinh
   Future<void> _pickDate(BuildContext context) async {
@@ -31,6 +29,8 @@ class _StateProfileScreen extends State<ProfileScreen> {
       });
     }
   }
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -189,8 +189,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                       Navigator.push(
                         context,
                         CupertinoPageRoute(builder: (_) => GoalScreen()),
-                      );
-
+                     );
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blueAccent,

@@ -1,6 +1,8 @@
 import 'package:dna/navigator/navigator_screen/tabbar_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 // Màn hình 6
@@ -62,8 +64,10 @@ class _StateMainScreen extends State<MainScreen> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    onPressed: () {
-                      Navigator.pushReplacement(context, CupertinoPageRoute(builder: (_) => TabbarScreen()));
+                    onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      await prefs.setBool('isLoggedIn', true);
+                      Navigator.push(context, CupertinoPageRoute(builder: (_) => TabbarScreen()));
                     },
                     child: Text("Go to home", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"))
                   ),
