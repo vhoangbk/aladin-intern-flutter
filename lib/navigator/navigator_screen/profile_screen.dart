@@ -1,4 +1,5 @@
 import 'package:dna/navigator/navigator_screen/goal_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -61,12 +62,12 @@ class _StateProfileScreen extends State<ProfileScreen> {
                 padding: EdgeInsets.symmetric(horizontal: 24),
                 child: Column(
                   children: [
-                    Text("Let's complete your profile",
+                    Text("Let's complete your profile".tr(),
                         style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins"),
                         textAlign: TextAlign.center),
                     SizedBox(height: 3),
                     Text(
-                      "It will help us to know more about you!",
+                      "It will help us to know more about you!".tr(),
                       style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
                       textAlign: TextAlign.center,
                     ),
@@ -87,7 +88,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                         DropdownButtonFormField<String>(
                           decoration: InputDecoration(
                             prefixIcon: Icon(Icons.person_outline),
-                            hintText: "Choose Gender",
+                            hintText: "Choose Gender".tr(),
                             filled: true,
                             fillColor: Colors.grey[100],
                             border: OutlineInputBorder(
@@ -96,7 +97,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                             ),
                           ),
                           value: _selectedGender,
-                          items: ['Male', 'Female', 'Other']
+                          items: ['Male'.tr(), 'Female'.tr(), 'Other'.tr()]
                               .map((g) => DropdownMenuItem(value: g, child: Text(g)))
                               .toList(),
                           onChanged: (val) => setState(() => _selectedGender = val),
@@ -111,7 +112,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                               decoration: InputDecoration(
                                 prefixIcon: Icon(Icons.calendar_today),
                                 hintText: _selectedDate == null
-                                    ? "Date of Birth"
+                                    ? "Date of Birth".tr()
                                     : "${_selectedDate!.toLocal()}".split(' ')[0],
                                 filled: true,
                                 fillColor: Colors.grey[100],
@@ -133,7 +134,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.monitor_weight_outlined),
-                                  hintText: "Your Weight",
+                                  hintText: "Your Weight".tr(),
                                   filled: true,
                                   fillColor: Colors.grey[100],
                                   border: OutlineInputBorder(
@@ -157,7 +158,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   prefixIcon: Icon(Icons.height),
-                                  hintText: "Your Height",
+                                  hintText: "Your Height".tr(),
                                   filled: true,
                                   fillColor: Colors.grey[100],
                                   border: OutlineInputBorder(
@@ -198,7 +199,7 @@ class _StateProfileScreen extends State<ProfileScreen> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Next", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
+                        Text("Next".tr(), style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
                         SizedBox(width: 10),
                         Icon(Icons.arrow_right_alt_rounded, color: Colors.white),
                       ],

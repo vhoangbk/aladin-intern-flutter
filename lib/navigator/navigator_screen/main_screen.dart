@@ -1,4 +1,5 @@
 import 'package:dna/navigator/navigator_screen/tabbar_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -46,11 +47,11 @@ class _StateMainScreen extends State<MainScreen> {
                 // Phan Text o duoi
                 SizedBox(height: 16),
                 Text(
-                  "Welcome, Stefani",
+                  "Welcome, Stefani".tr(),
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins"),
                 ),
-                Text("You are all set now, let’s reach your", style: TextStyle(color: Colors.grey, fontSize: 12, fontFamily: "Poppins", fontWeight: FontWeight.w400),),
-                Text("goals together with us", style: TextStyle(color: Colors.grey, fontSize: 12, fontFamily: "Poppins", fontWeight: FontWeight.w400),),
+                Text("You are all set now, let’s reach your".tr(), style: TextStyle(color: Colors.grey, fontSize: 12, fontFamily: "Poppins", fontWeight: FontWeight.w400),),
+                Text("goals together with us".tr(), style: TextStyle(color: Colors.grey, fontSize: 12, fontFamily: "Poppins", fontWeight: FontWeight.w400),),
                 Spacer(),
 
                 // Button Go to home
@@ -69,7 +70,7 @@ class _StateMainScreen extends State<MainScreen> {
                       await prefs.setBool('isLoggedIn', true);
                       Navigator.push(context, CupertinoPageRoute(builder: (_) => TabbarScreen()));
                     },
-                    child: Text("Go to home", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"))
+                    child: Text("Go to home".tr(), style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins"))
                   ),
                 ),
               ],

@@ -8,6 +8,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 
 // Màn hình 2
@@ -64,9 +65,9 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                                 // Text
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
-                                  children: const [
-                                    Text("Hey there,", style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "Poppins")),
-                                    Text("Create an account", style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins")),
+                                  children: [
+                                    Text("Hey there,".tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, fontFamily: "Poppins")),
+                                    Text("Create an account".tr(), style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, fontFamily: "Poppins")),
                                   ],                       
                                 ),
 
@@ -81,29 +82,29 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                           ),
                           SizedBox(height: 20),
 
-                          buildInput(icon: Icon(Icons.person_outline), hint: "First name", controller: _firstNameController),
-                          buildInput(icon: Icon(Icons.person_outline), hint: "Last name", controller: _lastNameController),
-                          buildInput(icon: Icon(Icons.email), hint: "Email", controller: _emailController),
-                          buildInput(icon: Icon(Icons.lock), hint: "Password", controller: _passwordController, obscure: true),
+                          buildInput(icon: Icon(Icons.person_outline), hint: "First name".tr(), controller: _firstNameController),
+                          buildInput(icon: Icon(Icons.person_outline), hint: "Last name".tr(), controller: _lastNameController),
+                          buildInput(icon: Icon(Icons.email), hint: "Email".tr(), controller: _emailController),
+                          buildInput(icon: Icon(Icons.lock), hint: "Password".tr(), controller: _passwordController, obscure: true),
 
                           Row(
                             children: [
                               Checkbox(value: false, onChanged: (value) {}),
-                              const Expanded(
+                              Expanded(
                                 child: Text.rich(
                                   TextSpan(
-                                    text: "By continuing your accept our ",
+                                    text: "By continuing your accept our ".tr(),
                                     style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400),
                                     children: [
                                       TextSpan(
-                                          text: "Privacy Policy",
+                                          text: "Privacy Policy".tr(),
                                           style: TextStyle(decoration: TextDecoration.underline, fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
                                       TextSpan(
-                                        text: " and ",
+                                        text: " and ".tr(),
                                         style: TextStyle(fontSize: 10, color: Colors.grey, fontFamily: "Poppins", fontWeight: FontWeight.w400),
                                       ),
                                       TextSpan(
-                                          text: "Term of use",
+                                          text: "Term of use".tr(),
                                           style: TextStyle(decoration: TextDecoration.underline, fontSize: 10, color: Colors.black, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
                                     ],
                                   ),
@@ -126,7 +127,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               onPressed: () {
                                 Navigator.push(context, CupertinoPageRoute(builder: (_) => ProfileScreen()));
                               },
-                              child: Text("Register", style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
+                              child: Text("Register".tr(), style: TextStyle(color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
                             ),
                           ),
 
@@ -137,7 +138,7 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                               Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(" Or ", style: TextStyle(fontSize: 14, fontFamily: "Inter-Italic-VariableFont_opsz,wght", fontWeight: FontWeight.w400)),
+                                child: Text(" Or ".tr(), style: TextStyle(fontSize: 14, fontFamily: "Inter-Italic-VariableFont_opsz,wght", fontWeight: FontWeight.w400)),
                               ),
                               Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                             ],
@@ -152,11 +153,11 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
                             children: [
                               RichText(
                                 text: TextSpan(
-                                  text: "Already have an account? ",
+                                  text: "Already have an account? ".tr(),
                                   style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.black),
                                   children: [
                                     TextSpan(
-                                      text: "Login",
+                                      text: "Login".tr(),
                                       style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.pinkAccent),
                                       recognizer: TapGestureRecognizer()
                                         ..onTap = () {

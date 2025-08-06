@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,14 +19,15 @@ class _LanguageButtonState extends State<LanguageButton>{
     _loadLanguage();
   }
   
-  // Mac dinh tieng Viet
+  // Lấy ngôn ngữ đã lưu
   Future<void> _loadLanguage() async{
     final prefs = await SharedPreferences.getInstance();
     setState(() {
       _language = prefs.getString('language') ?? 'vi';
     });
   }
-
+  
+  //Lưu ngôn ngữ với lần các lần mở app sau 
   Future<void> _saveLanguage(String lang) async{
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('language', lang);
@@ -44,8 +46,9 @@ class _LanguageButtonState extends State<LanguageButton>{
                 child: Image.asset("assets/images/united_kingdom.png")               
               ),
               title: const Text("English"),
-              onTap: () {
-                _saveLanguage('en');
+              onTap: () async {
+                await _saveLanguage('en');
+                context.setLocale(const Locale('en'));
                 Navigator.pop(context);
               },
             ),
@@ -57,8 +60,9 @@ class _LanguageButtonState extends State<LanguageButton>{
                 child: Image.asset("assets/images/vietnamese.jpeg")
               ),
               title: const Text("Vietnamese"),
-              onTap: (){
-                _saveLanguage('vi');
+              onTap: () async{
+                await _saveLanguage('vi');
+                context.setLocale(const Locale('vi'));
                 Navigator.pop(context);
               },
             ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'welcome_screen.dart';
@@ -16,24 +17,24 @@ class _StateGoalScreen extends State<GoalScreen> {
   final List<Map<String, String>> pages = [
     {
       "image": "assets/images/bong_da.jpeg",
-      "title": "Improve Shape",
-      "description": "I have a low amount of body fat",
-      "description2": "and need / want to build more",
-      "description3": "muscle"
+      "title": "Improve Shape".tr(),
+      "description": "I have a low amount of body fat".tr(),
+      "description2": "and need / want to build more".tr(),
+      "description3": "muscle".tr()
     },
     {
       "image": "assets/images/bong_ro.jpeg",
-      "title": "Lean & Tone",
-      "description": "I'm 'skinny fat', look thin but have",
-      "description2": "no shape. I want to learn to build",
-      "description3": "muscle in the right way"
+      "title": "Lean & Tone".tr(),
+      "description": "I'm 'skinny fat', look thin but have".tr(),
+      "description2": "no shape. I want to learn to build".tr(),
+      "description3": "muscle in the right way".tr()
     },
     {
       "image": "assets/images/cau_long.jpeg",
-      "title": "Lose a Fat",
-      "description": "I have over 20 lbs to lose. I want to",
-      "description2": "drop all this fat and gain muscle",
-      "description3": "mass",
+      "title": "Lose a Fat".tr(),
+      "description": "I have over 20 lbs to lose. I want to".tr(),
+      "description2": "drop all this fat and gain muscle".tr(),
+      "description3": "mass".tr(),
     },
   ];
 
@@ -44,18 +45,18 @@ class _StateGoalScreen extends State<GoalScreen> {
           child: Column(
             children: [
               //Phan text tren cung
-              const Text(
-                "What is your goal ?",
+              Text(
+                "What is your goal ?".tr(),
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins"),
               ),
               const SizedBox(height: 8),
-              const Text(
-                "It will help us to choose a best",
+              Text(
+                "It will help us to choose a best".tr(),
                 style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "Poppins"),
               ),
               const SizedBox(height: 3),
-              const Text(
-                "program for you",
+              Text(
+                "program for you".tr(),
                 style: TextStyle(color: Colors.grey, fontWeight: FontWeight.w400, fontSize: 12, fontFamily: "Poppins"),
               ),
               const SizedBox(height: 16),
@@ -163,8 +164,8 @@ class _StateGoalScreen extends State<GoalScreen> {
                         context,
                         CupertinoPageRoute(builder: (_) => const WelcomeScreen(fromLogin: true,)));
                     },
-                    child: const Text(
-                      "Confirm",
+                    child: Text(
+                      "Confirm".tr(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w700,

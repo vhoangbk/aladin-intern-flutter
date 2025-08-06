@@ -1,4 +1,5 @@
 import 'package:dna/navigator/navigator_screen/create_account_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
@@ -58,13 +59,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Hey there,", style: TextStyle(fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
-                          Text("Welcome back", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
-                          buildInput(icon: Icon(Icons.email), hint: "Email", controller: _emailController),
+                          Text("Hey there,".tr(), style: TextStyle(fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w400)),
+                          Text("Welcome back".tr(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, fontFamily: "Poppins")),
+                          buildInput(icon: Icon(Icons.email), hint: "Email".tr(), controller: _emailController),
                           SizedBox(height: 10),
-                          buildInput(icon: Icon(Icons.lock), hint: "Password", controller: _passwordController, obscure: true),
+                          buildInput(icon: Icon(Icons.lock), hint: "Password".tr(), controller: _passwordController, obscure: true),
                           SizedBox(height: 5),
-                          Text("Forgot your password?",
+                          Text("Forgot your password?".tr(),
                               style: TextStyle(
                                   decoration: TextDecoration.underline,
                                   fontSize: 12,
@@ -91,7 +92,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                                   children: [
                                     Icon(Icons.login, color: Colors.white),
                                     SizedBox(width: 10),
-                                    Text("Login", style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: "Poppins")),
+                                    Text("Login".tr(), style: TextStyle(color: Colors.white, fontSize: 16, fontFamily: "Poppins")),
                                   ],
                                 ),
                               ),
@@ -103,7 +104,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                               Expanded(child: Divider(thickness: 1, color: Colors.grey)),
                               Padding(
                                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                                child: Text(" Or ",
+                                child: Text(" Or ".tr(),
                                     style: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, fontFamily: "Inter")),
                               ),
                               Expanded(child: Divider(thickness: 1, color: Colors.grey)),
@@ -117,11 +118,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                             children: [
                               RichText(
                                 text: TextSpan(
-                                  text: "Don't have an account yet? ",
+                                  text: "Don't have an account yet? ".tr(),
                                   style: TextStyle(fontSize: 14, fontFamily: "Poppins", fontWeight: FontWeight.w400, color: Colors.black),
                                   children: [
                                     TextSpan(
-                                      text: "Register",
+                                      text: "Register".tr(),
                                       style: TextStyle(
                                           fontSize: 14,
                                           fontFamily: "Poppins",
