@@ -43,12 +43,15 @@ class _LanguageButtonState extends State<LanguageButton>{
               leading: SizedBox (
                 height: 25,
                 width: 25,
-                child: Image.asset("assets/images/united_kingdom.png")               
+                child: Image.asset("assets/images/england.jpg")               
               ),
               title: const Text("English"),
               onTap: () async {
                 await _saveLanguage('en');
                 context.setLocale(const Locale('en'));
+                setState(() {
+                  _language = 'en';
+                });
                 Navigator.pop(context);
               },
             ),
@@ -63,6 +66,9 @@ class _LanguageButtonState extends State<LanguageButton>{
               onTap: () async{
                 await _saveLanguage('vi');
                 context.setLocale(const Locale('vi'));
+                setState(() {
+                  _language = 'vi';
+                });
                 Navigator.pop(context);
               },
             ),
@@ -73,18 +79,36 @@ class _LanguageButtonState extends State<LanguageButton>{
 
   @override
   Widget build (BuildContext context){
+    String flagAsset = _language == 'vi'
+      ? 'assets/images/vietnamese.jpeg'
+      : 'assets/images/england.jpg';
+
     return SizedBox(
       height: 40,
       width: 40,
       child: ElevatedButton(
         onPressed: () => _showLanguageSelector(context), 
         style: ElevatedButton.styleFrom(
-          padding: EdgeInsets.zero,
-          shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(6))
+          elevation: 1,
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadiusGeometry.circular(4))
         ),
-        child: const Icon(Icons.language, size: 18)
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.zero,
+              child: Image.asset(
+                flagAsset,
+                height: 20,
+                width: 20,
+              )      
+            )
+          ],
+        )              
       )
-    );
+    );  
   }
 }
 

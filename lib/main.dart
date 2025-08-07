@@ -13,7 +13,8 @@ void main() async
   final systemLocale =PlatformDispatcher.instance.locale;
   final langCode = systemLocale.languageCode;
 
-  // Nếu không phải en/vi thì mặc định là vi
+  // Nếu không phải en thì mặc định là vi
+  // Nếu là en thì mặc định là en
   final Locale defaultLocale  = (langCode == 'en' || langCode == 'vi')
       ? Locale(langCode)
       : const Locale('vi');
@@ -24,7 +25,7 @@ void main() async
       path: 'assets/langs',
       fallbackLocale: const Locale('en'),
       startLocale: defaultLocale,
-      saveLocale: false,
+      saveLocale: true,
       child: const MyApp(),
     )
 

@@ -17,7 +17,7 @@ class _ScheduleTabbarState extends State<ScheduleTabbar> {
     return Scaffold(
       body: Column(
         children: [
-          ButtonTabbar(title: "Workout Schedule".tr()) // dịch 
+          ButtonTabbar(title: "Workout Schedule".tr()) // dịch
         ],
       ),
     );
