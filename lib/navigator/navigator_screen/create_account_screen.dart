@@ -23,7 +23,8 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   Locale? _currentLocale;
-
+  
+  // Xử lí luồng thay đổi ngôn ngữ nếu ấn đăng nhập và đăng kí 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
