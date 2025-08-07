@@ -22,6 +22,20 @@ class _StateCreateAccountScreen extends State<CreateAccountScreen> {
   final TextEditingController _lastNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  Locale? _currentLocale;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    final locale = context.locale;
+    if (_currentLocale != locale) {
+      setState(() {
+        _currentLocale = locale;
+      }
+      );
+    }
+  }
 
   
   Future<T?> pushCupertino<T>(BuildContext context, Widget page) {
