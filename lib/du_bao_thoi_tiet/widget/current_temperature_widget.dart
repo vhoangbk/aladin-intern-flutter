@@ -3,17 +3,17 @@
 import 'package:flutter/material.dart';
 import 'package:dna/du_bao_thoi_tiet/model/image_and_icon.dart';
 
-class CurrentTemperature extends StatefulWidget {
+class CurrentTemperatureWidget extends StatefulWidget {
   final String? locationName;
   final Map<String, dynamic>? currentCondition;
 
-  const CurrentTemperature({super.key, required this.locationName, required this.currentCondition});
+  const CurrentTemperatureWidget({super.key, required this.locationName, required this.currentCondition});
   @override
-  State<CurrentTemperature> createState() => _StateTemperatureWidget();
+  State<CurrentTemperatureWidget> createState() => _StateTemperatureWidget();
 
 }
 
-class _StateTemperatureWidget extends State<CurrentTemperature>{
+class _StateTemperatureWidget extends State<CurrentTemperatureWidget>{
 
   @override
   Widget build(BuildContext context) {

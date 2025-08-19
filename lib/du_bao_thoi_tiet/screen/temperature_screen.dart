@@ -134,7 +134,7 @@ class _TemperatureScreenState extends State<TemperatureScreen> {
                       ),
                       Column(
                         children: [
-                          CurrentTemperature(
+                          CurrentTemperatureWidget(
                             locationName: locationName, 
                             currentCondition: currentCondition
                           ),
