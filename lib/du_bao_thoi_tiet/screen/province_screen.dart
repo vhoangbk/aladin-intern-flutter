@@ -83,4 +83,3 @@ class _ProvinceScreenState extends State<ProvinceScreen> {
     );
   }
 }
-

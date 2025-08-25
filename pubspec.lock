@@ -103,7 +103,7 @@ packages:
     source: hosted
     version: "9.1.2"
   built_collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: built_collection
       sha256: "376e3dd27b51ea877c28d525560790aee2e6fbb5f20e2f85d5081027d94e2100"
@@ -111,7 +111,7 @@ packages:
     source: hosted
     version: "5.1.1"
   built_value:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: built_value
       sha256: "0b1b12a0a549605e5f04476031cd0bc91ead1d7c8e830773a18ee54179b3cb62"
@@ -403,13 +403,21 @@ packages:
     source: hosted
     version: "0.7.2"
   json_annotation:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: json_annotation
       sha256: "1ce844379ca14835a50d2f019a3099f419082cfdd231cd86a142af94dd5c6bb1"
       url: "https://pub.dev"
     source: hosted
     version: "4.9.0"
+  json_serializable:
+    dependency: "direct dev"
+    description:
+      name: json_serializable
+      sha256: c2fcb3920cf2b6ae6845954186420fca40bc0a8abcc84903b7801f17d7050d7c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.9.0"
   leak_tracker:
     dependency: transitive
     description:

@@ -1,15 +1,16 @@
 // Màn hình hiển thị nhiệt độ thực + list danh sách nhiệt độ của các ngày tiếp theo
 
+import 'package:dna/du_bao_thoi_tiet/model/image_background.dart';
 import 'package:dna/du_bao_thoi_tiet/widget/list_temperature.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:dna/du_bao_thoi_tiet/dio/dio_temperature.dart';
 import 'package:dna/du_bao_thoi_tiet/widget/current_temperature_widget.dart';
 import 'package:dna/du_bao_thoi_tiet/model/data_view.dart';
-import 'package:dna/du_bao_thoi_tiet/model/image_and_icon.dart';
 
 class TemperatureScreen extends StatefulWidget {
   final String locationKey;
+  //final List<Weather> weatherList; 
   const TemperatureScreen({super.key, required this.locationKey});
 
   @override
@@ -104,46 +105,68 @@ class _TemperatureScreenState extends State<TemperatureScreen> {
           }
         },
         child: isLoading
-            ? const Center(child: CircularProgressIndicator())
-            // Xử lí đối với những tình huống bị lỗi thì sẽ in ra log
-            : errorMessage != null
-                ? Center(
+          ? const Center(child: CircularProgressIndicator())
+          : errorMessage != null
+              ? Center(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          errorMessage!, 
+                          errorMessage!,
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, fontFamily: "Poppins"),
+                          style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w400,
+                            fontFamily: "Poppins",
+                          ),
                         ),
+                        const SizedBox(height: 12),
                         ElevatedButton(
                           onPressed: loadData,
-                          child: const Text('Thử lại', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, fontFamily: "Inter")),
+                          child: const Text(
+                            'Thử lại',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500,
+                              fontFamily: "Inter",
+                            ),
+                          ),
                         ),
                       ],
                     ),
-                  )
-                  // Hình nền + thông tin + list nhiệt độ
-                : Stack(
-                    children: [
-                      Positioned.fill(
-                        child: Image.asset(
-                          getWeatherImage(currentCondition?['WeatherText']),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Column(
-                        children: [
-                          CurrentTemperatureWidget(
-                            locationName: locationName, 
-                            currentCondition: currentCondition
-                          ),
-                          ListTemperature(forecastData: forecastData)
-                        ],
-                      )
-                    ],
                   ),
+                )
+              : Stack(
+                  children: [
+                    Positioned.fill(
+                      child: Image.asset(
+                        getWeatherBackground(currentCondition?['WeatherIcon']),
+                        fit: BoxFit.cover,
+                      )
+                    ),
+
+                    Positioned.fill(
+                      child: Container(
+                        color: Color(0x33000000)
+                      )
+                    ),
+                    
+                    // Nội dung
+                    Column(
+                      children: [
+                        CurrentTemperatureWidget(
+                          locationName: locationName,
+                          currentCondition: currentCondition,
+                        ),
+                        ListTemperature(forecastData: forecastData),
+                      ],
+                    ),
+                  ],
+                ),
       ),
     );
   }
 }
+

@@ -31,7 +31,7 @@ class _StateProvinceListView extends State<ProvinceListView>{
             onPressed: () async {
               final key = await widget.apiProvince.getLocationKey(adminId, nameVi, nameEn);
               if (!mounted) return;
-              // Có 1 vài tỉnh không khớp apiKey thì sẽ in log
+              // Có 1 vài tỉnh không khớp apiKey thì sẽ in log, hoặc apikey hết hạn 
               if (key == null) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(content: Text('Không tìm thấy Location Key cho "$nameVi"', style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500, fontFamily: "Inter"))),

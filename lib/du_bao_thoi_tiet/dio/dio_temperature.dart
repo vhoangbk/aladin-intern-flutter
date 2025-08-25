@@ -1,45 +1,45 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
+import 'package:flutter/services.dart' show rootBundle;
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:dna/du_bao_thoi_tiet/model/data_view.dart';
+import 'package:dna/du_bao_thoi_tiet/model/weather_mapping.dart';
 
 class DioTemperature {
   final Dio _dio = Dio(BaseOptions(
-    connectTimeout: const Duration(seconds: 60),
-    receiveTimeout: const Duration(seconds: 60),
+    connectTimeout: const Duration(seconds: 30),
+    receiveTimeout: const Duration(seconds: 30),
   ));
-  static const String _apiKey = 'BG7Atp7rzVPsUC6PP33Gt5BL3GyV52sN';
+
+  static const String _apiKey = 'ARSUQKHanpbqFwwFVhpubcAKosOVLsbH';
+
+  Future<List<WeatherMapping>> loadMappingList() async {
+    final jsonString = await rootBundle.loadString('assets/weather_mapping/weather_mapping.json');
+    final List<dynamic> data = json.decode(jsonString);
+    return data.map((item) => WeatherMapping.fromJson(item)).toList();
+  }
 
   Future<Map<String, dynamic>> fetchWeather(String locationKey) async {
     final prefs = await SharedPreferences.getInstance();
     final cacheKey = 'weather_$locationKey';
 
-    await prefs.remove(cacheKey);
+    // Luôn fetch dữ liệu mới từ server
+    final freshData = await _fetchAndUpdateServer(locationKey, prefs, cacheKey);
 
-    // Load cache trước để hiển thị ngay
-    final cachedData = prefs.getString(cacheKey);
-    if (cachedData != null) {
-      final data = jsonDecode(cachedData);
-      // Trả dữ liệu cache ngay, fetch server sẽ update sau
-      _fetchAndUpdateServer(locationKey, prefs, cacheKey);
-      return {
-        'forecast': (data['forecast'] as List)
-            .map((item) => ForecastDay.fromJson(item))
-            .toList(),
-        'current': data['current'],
-        'locationName': data['locationName'],
-      };
-    } else {
-      // Nếu không có cache, fetch server trực tiếp và chờ trả về
-      return await _fetchAndUpdateServer(locationKey, prefs, cacheKey);
-    }
+    // Trả về cả dữ liệu hiện tại, forecast và danh sách mapping
+    return {
+      'forecast': freshData['forecast'],
+      'current': freshData['current'],
+      'locationName': freshData['locationName'],
+      'mappingList': await loadMappingList(), // thêm mappingList vào
+    };
   }
 
-  // Hàm riêng fetch server và update cache/return dữ liệu mới
   Future<Map<String, dynamic>> _fetchAndUpdateServer(
-      String locationKey, SharedPreferences prefs, String cacheKey) async {
+    String locationKey, SharedPreferences prefs, String cacheKey) async {
     try {
-      // Fetch 3 request cùng lúc
+      final mappingList = await loadMappingList();
+
       final responses = await Future.wait([
         _dio.get(
           'http://dataservice.accuweather.com/forecasts/v1/daily/5day/$locationKey',
@@ -47,10 +47,10 @@ class DioTemperature {
         ),
         _dio.get(
           'http://dataservice.accuweather.com/currentconditions/v1/$locationKey',
-          queryParameters: {'apikey': _apiKey, 'language': 'vi-vn', 'details': 'true'},
+          queryParameters: {'apikey': _apiKey, 'language': 'vi-vn', 'details': true},
         ),
         _dio.get(
-          'http://dataservice.accuweather.com/locations/v1/$locationKey.json',
+          'http://dataservice.accuweather.com/locations/v1/$locationKey',
           queryParameters: {'apikey': _apiKey, 'language': 'vi-vn'},
         ),
       ]);
@@ -63,7 +63,7 @@ class DioTemperature {
           currentResponse.statusCode == 200 &&
           locationResponse.statusCode == 200) {
         final forecastData = (forecastResponse.data['DailyForecasts'] as List)
-            .map((item) => ForecastDay.fromJson(item))
+            .map((item) => ForecastDay.fromJson(item, mappingList))
             .toList();
 
         final currentCondition =
@@ -71,7 +71,6 @@ class DioTemperature {
 
         final locationName = locationResponse.data['LocalizedName'];
 
-        // Lưu cache mới
         await prefs.setString(
           cacheKey,
           jsonEncode({
@@ -88,7 +87,7 @@ class DioTemperature {
         };
       } else {
         throw Exception(
-            'Lỗi server: ${forecastResponse.statusCode ?? currentResponse.statusCode ?? locationResponse.statusCode}');
+          'Lỗi server: ${forecastResponse.statusCode ?? currentResponse.statusCode ?? locationResponse.statusCode}');
       }
     } on DioException catch (e) {
       if (e.type == DioExceptionType.connectionTimeout ||
@@ -102,4 +101,5 @@ class DioTemperature {
     }
   }
 }
+
 

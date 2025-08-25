@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class DioProvince {
   final Dio _dio;
-  static const String _apiKey = 'BG7Atp7rzVPsUC6PP33Gt5BL3GyV52sN';
+  static const String _apiKey = 'ARSUQKHanpbqFwwFVhpubcAKosOVLsbH';
 
   // Map cho các trường hợp đặc biệt có ID là chữ cái (5 thành phố trực thuộc trung ương)
   final Map<String, String> municipalitySearch = const{
