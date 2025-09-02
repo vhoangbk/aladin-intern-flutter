@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "825605835009",
+    "project_id": "fcm-app-dna",
+    "storage_bucket": "fcm-app-dna.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:825605835009:android:f83d14ff274fbb2891b300",
+        "android_client_info": {
+          "package_name": "com.example.dna"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyMb1rABDTaWhLVe1f6BfcNNZEc0deMnY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
