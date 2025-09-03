@@ -74,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             clipBehavior: Clip.none,
                             children: [
                               CircleAvatar(
-                                backgroundColor: Colors.blue,
+                                backgroundColor: Colors.green,
                                 child: Text(conv.sender[0].toUpperCase()),
                               ),
                               if (conv.unreadCount > 0)
