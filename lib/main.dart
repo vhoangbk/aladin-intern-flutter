@@ -48,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
         title: 'FCM Chat',
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: ThemeData(primarySwatch: Colors.green),
         builder: (context, child) {
           return Overlay(
             initialEntries: [
