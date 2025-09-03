@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           onTap: () {
-                            // ✅ Reset số chưa đọc ở main.dart
+                            // Reset số chưa đọc ở main.dart
                             widget.onMarkRead(conv);
 
                             Navigator.push(
